@@ -16,7 +16,7 @@ public class Request {
     private String method;
     private String version;
     private String uri;
-    private String query;
+    private String path;
     private final List<NameValuePair> queryParams;
 
     public Request(String input) throws URISyntaxException {
@@ -25,18 +25,18 @@ public class Request {
 
         if (parts.length == 3) {
             this.method = parts[0];
-            this.uri = parts[1];
-            this.query = uri.split("/?")[0];
             this.version = parts[2];
+            this.uri = parts[1];
         } else {
             this.method = null;
             this.uri = null;
             this.version = null;
         }
-        URIBuilder builder = new URIBuilder(uri);
+        URIBuilder builder = new URIBuilder(parts[1]);
 //        URI getUri = builder.build();
 //        this.queryParams = URLEncodedUtils.parse(getUri, Charset.defaultCharset());
-        this.queryParams = builder.getQueryParams();
+        queryParams = builder.getQueryParams();
+        this.uri = builder.getPath();
     }
 
     public void parse() {
@@ -69,7 +69,7 @@ public class Request {
         return queryParams;
     }
 
-    public List<NameValuePair> params(String name) {
+    public List<NameValuePair> getParamByName(String name) {
         return queryParams
                 .stream()
                 .filter(x -> Objects.equals(x.getName(), name))

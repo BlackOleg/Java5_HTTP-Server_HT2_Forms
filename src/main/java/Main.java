@@ -9,13 +9,18 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.stream.Collectors;
 
 public class Main {
 
     public static void main(String[] args) {
         final var server = new HttpServer();
         server.addHandler("GET", "/messages", (request, responseStream) -> {
-            String hello = "Hello World! This is Get!";
+            //String hello = "Hello World! This is Get!";
+            String hello = "Hello World! This is Get with following params: " + request.getQueryParams()
+                    .stream()
+                    .map( n -> n.toString() )
+                    .collect( Collectors.joining( "," ) );
             String message = new StringBuilder()
                     .append("HTTP/1.1 200 OK\r\n")
                     .append("Content-Type: " + "text/plain" + "\r\n")
