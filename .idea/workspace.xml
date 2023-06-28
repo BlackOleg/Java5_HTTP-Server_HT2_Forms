@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36dd44c1-8fdb-4ada-ad82-d76f99a1e6bd" name="Changes" comment="Ready to show">
+    <list default="true" id="36dd44c1-8fdb-4ada-ad82-d76f99a1e6bd" name="Changes" comment="Main class cleaned up">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HttpServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +65,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1687723548525</updated>
-      <workItem from="1687972246479" duration="1582000" />
+      <workItem from="1687972246479" duration="2119000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1687807936509</created>
@@ -82,7 +81,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687809632293</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Main class cleaned up">
+      <option name="closed" value="true" />
+      <created>1687977464055</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687977464055</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,7 +98,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Ready to show" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ready to show" />
+    <MESSAGE value="Main class cleaned up" />
+    <option name="LAST_COMMIT_MESSAGE" value="Main class cleaned up" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
