@@ -5,6 +5,7 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
+/.idea/
 .idea/*
 .idea/modules.xml
 .idea/jarRepositories.xml
@@ -38,4 +39,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
-/.idea/
+
