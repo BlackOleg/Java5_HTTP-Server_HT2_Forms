@@ -1,9 +1,11 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 
 public class HttpServer {
+    private static final int PORT_DEFAULT=9999;
     private final int port;
     ExecutorService threadPoolExecutor;
     private static final int pool = 64;
@@ -18,7 +20,7 @@ public class HttpServer {
     private final  ConcurrentHashMap<String, ConcurrentHashMap<String,Handler>> handlers = new ConcurrentHashMap<>();
 
     public HttpServer() {
-        this.port = 9999;
+        this.port = PORT_DEFAULT;
     }
 
     public HttpServer(int port) {
@@ -59,5 +61,38 @@ public class HttpServer {
         if (!methodMap.containsKey(uri)) {
             methodMap.put(uri,handler);
         }
+    }
+    public void topUpHandlers(){
+        addHandler("GET", "/messages", (request, responseStream) -> {
+            //String hello = "Hello World! This is Get!";
+            String hello = "Hello World! This is Get with following params: " + request.getQueryParams()
+                    .stream()
+                    .map( n -> n.toString() )
+                    .collect( Collectors.joining( "," ) );
+            String message = new StringBuilder()
+                    .append("HTTP/1.1 200 OK\r\n")
+                    .append("Content-Type: " + "text/plain" + "\r\n")
+                    .append("Content-Length: " + hello.length() + "\r\n")
+                    .append("Connection: close\r\n")
+                    .append("\r\n")
+                    .toString();
+            responseStream.write(message.getBytes());
+            responseStream.write(hello.getBytes());
+        });
+        addHandler("POST", "/messages", new Handler() {
+            public void handle(Request request, BufferedOutputStream responseStream) throws IOException {
+                String hello = "Hello World! This is Post!";
+                String message = new StringBuilder()
+                        .append("HTTP/1.1 200 OK\r\n")
+                        .append("Content-Type: " + "text/plain" + "\r\n")
+                        .append("Content-Length: " + hello.length() + "\r\n")
+                        .append("Connection: close\r\n")
+                        .append("\r\n")
+                        .toString();
+                responseStream.write(message.getBytes());
+                responseStream.write(hello.getBytes());
+                //output.flush();
+            }
+        });
     }
 }
